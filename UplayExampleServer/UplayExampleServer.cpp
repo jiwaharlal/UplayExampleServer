@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <boost/asio.hpp>
+#include "MessageBus.h"
 
 using boost::asio::ip::tcp;
 
