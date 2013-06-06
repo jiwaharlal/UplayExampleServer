@@ -96,16 +96,6 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 }
 
 
-/*int main(int argc, char* argv[])
-{
-	MyApp* app = new MyApp();
-	app->Initialize(argc, argv);
-	MyFrame *frame = new MyFrame( _("Hello World"), wxPoint(50, 50),
-		wxSize(450, 350));
-	app->MainLoop();
-	return 0;
-}*/
-
 std::string make_daytime_string()
 {
 	using namespace std; // For time_t, time and ctime;

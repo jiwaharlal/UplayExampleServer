@@ -7,9 +7,12 @@ public:
 
 	void						subscribe(Message, Function);
 
-	void						post(Message);
+	void						dispatch(Message);
 private:
 								MessageBus(void);
 								~MessageBus(void);
+
+	typedef boost::function<void(MessageBase&)>
+	std::map<std::vector<boost::function<void(MessageBase)> > > myRecieversMap;
 };
 
