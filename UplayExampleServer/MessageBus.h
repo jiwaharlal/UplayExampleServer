@@ -1,5 +1,7 @@
 #pragma once
 
+class MessageDispatcher
+
 class MessageBus
 {
 public:
