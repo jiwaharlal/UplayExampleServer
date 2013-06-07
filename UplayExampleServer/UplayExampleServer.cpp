@@ -7,16 +7,23 @@
 #include <boost/asio.hpp>
 #include "MessageBus.h"
 
-using boost::asio::ip::tcp;
+#include <ctime>
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/array.hpp>
+#include <boost/lexical_cast.hpp>
+
+#include "TcpServer.h"
 
 #include <wx/wx.h>
 
 class MyApp : public wxApp
 {
 	virtual bool OnInit();
+	void close();
 };
 
-IMPLEMENT_APP(MyApp)
+//IMPLEMENT_APP(MyApp)
 
 class MyFrame : public wxFrame
 {
@@ -104,6 +111,41 @@ std::string make_daytime_string()
 	return ctime(&now);
 }
 
+int main()
+{
+	try
+	{
+		boost::asio::io_service ioService;
+		TcpServer server(ioService);
+		ioService.run();
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
+	return 0;
+}
+
+/*int main(int argc, char* argv[])
+{
+	wxApp* app = new MyApp();
+
+
+	wxApp::SetInstance(app);
+	wxEntryStart(argc, argv);
+	app->OnInit();
+	//wxTheApp->
+
+	MSG msg;
+	while (GetMessage(&msg,NULL,0,0)) {
+		TranslateMessage(&msg);
+		//std::cout << "some message\n";
+		DispatchMessage(&msg); 
+	} 
+
+	return 0;
+}*/
 
 
 /*
